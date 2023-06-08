@@ -4,7 +4,7 @@ ThisBuild / scalaVersion := "2.13.1"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "AkkaTemplate"
+    name := "endless-CQRS"
   )
 
 lazy val circeVersion = "0.14.5"
@@ -14,8 +14,16 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka"           %% "akka-actor"                 % "2.8.2",
   "com.typesafe.akka"           %% "akka-stream"                % "2.8.2",
 
+  // Akka Persistence
+  "com.typesafe.akka"           %% "akka-persistence"           % "2.8.2",
 
-// Postgres DB
+  // Akka HTTP
+  "com.typesafe.akka"           %% "akka-http"                  % "10.5.0",
+
+  // endless4s
+  "io.github.endless4s"         %% "endless-core"               % "0.23.0" ,
+
+  // Postgres DB
   "org.postgresql"              % "postgresql"                  % "42.5.4",
 
   // Slick

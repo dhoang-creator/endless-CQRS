@@ -8,6 +8,13 @@ import org.typelevel.log4cats.Logger
   There's a lot of red here, are these method calls now deprecated?
  */
 
+/*
+  Reader-Writer exposed via Entity type class:
+    trait Entity[F[_], S, E] extends StateReader[F, S] with EventWriter[F, E] with Monad[F]
+    wherein:
+    - StateReader allows for read: F[S]
+    - EventWriter provides the ability to persist events: writer(events: E*): F[Unit]
+ */
 final case class BookingEntity[F[_]: Monad: Logger](
                                                      entity: Entity[BookingState, BookingEvent]
                                                    ) extends BookingAlg[F] {

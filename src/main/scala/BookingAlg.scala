@@ -3,6 +3,7 @@ import endless.\/
 
 // note: type \/[A, B] = Either[A, B]
 
+// Following Tagless Algebra allows us to check against a certain type
 trait BookingAlg[F[_]] {
   def place(booking: Booking): F[AlreadyExists.type \/ Unit]
   def getBooking: F[Unknown.type \/ Booking]

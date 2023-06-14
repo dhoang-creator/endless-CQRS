@@ -1,10 +1,12 @@
+import API.BookingEventApplier
+import Repository.{Booking, BookingCommand}
 import com.typesafe.config.ConfigException.IO
 import endless.core.interpret.EntityT
 import munit._
 
 class BookingEntitySuite
     extends munit.CatsEffectSuite {
-  private val bookingAlg = BookingEntity(EntityT.instance[IO, BookingAlg, BookingEvent])
+  private val bookingAlg = BookingEntity(EntityT.instance[IO, BookingCommand, BookingEvent])
   private implicit val eventApplier: BookingEventApplier = new BookingEventApplier
 
   test("place booking") {

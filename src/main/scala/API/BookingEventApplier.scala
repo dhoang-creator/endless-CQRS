@@ -1,3 +1,6 @@
+package API
+
+import Repository.LatLon
 import akka.http.javadsl.server.Directives.route
 import endless.\/
 import endless.core.event.EventApplier
@@ -8,11 +11,10 @@ class BookingEventApplier extends EventApplier[BookingState, BookingEvent] {
       case BookingPlaced(booking) =>
         state
           .toLeft(BookingState(definition = booking, route = Nil))
-          .leftMap(_ => "Booking already exists")
+          .leftMap(_ => "Repository.Booking already exists")
       case RouteSet(steps: List[LatLon]) =>
         state
           .toRight("Attempt to set route on unknown booking")
           .map(_.copy(route = steps))
     }).map(Option(_))
-
 }

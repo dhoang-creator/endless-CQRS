@@ -1,3 +1,6 @@
+package service
+
+import Repository.{Booking, BookingCommand, LatLon}
 import akka.http.scaladsl.model.RemoteAddress.Unknown
 import cats.Monad
 import endless.\/
@@ -17,7 +20,7 @@ import org.typelevel.log4cats.Logger
  */
 final case class BookingEntity[F[_]: Monad: Logger](
                                                      entity: Entity[BookingState, BookingEvent]
-                                                   ) extends BookingAlg[F] {
+                                                   ) extends BookingCommand[F] {
 
   def place(booking: Booking): F[AlreadyExists.type \/ Unit] =
     entity.ifUnknownF(entity.write(BookingPlaced(booking)))(_ => AlreadyExists)

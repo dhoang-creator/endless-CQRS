@@ -20,6 +20,10 @@ libraryDependencies ++= Seq(
   // Akka HTTP
   "com.typesafe.akka"           %% "akka-http"                  % "10.5.0",
 
+  // Cats & Cats Effect
+  "org.typelevel"               %% "cats-core"                  % "2.9.0",
+  "org.typelevel"               %% "cats-effect"                % "3.5.0",
+
   // endless4s
   "io.github.endless4s"         %% "endless-core"               % "0.23.0" ,
 
@@ -48,6 +52,11 @@ libraryDependencies ++= Seq(
   "org.scalatest"               %% "scalatest-funspec"          % "3.2.15"      % Test,
   "org.scalatestplus"           %% "scalacheck-1-17"            % "3.2.16.0"    % Test,
   "org.scalamock"               %% "scalamock"                  % "5.2.0"       % Test,
-  "org.scalatestplus.play"      %% "scalatestplus-play"         % "5.1.0"       % Test,
+
+  // MUnit & Cats Testing
+  "org.scalameta"               %% "munit"                      % "1.0.0-M8"    % Test,
+  "org.typelevel"               %% "munit-cats-effect-3"        % "1.0.7"       % Test,
+
+// Akka Testing
   "com.typesafe.akka"           %% "akka-testkit"               % "2.8.2"       % Test
 )
